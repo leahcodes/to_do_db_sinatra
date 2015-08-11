@@ -5,15 +5,20 @@ class Task
     @description = description
   end
 
-  define_method (:description) do
-    @description
+  define_singleton_method(:clear) do
+    @@all_tasks = []
   end
 
   define_singleton_method (:all) do
     @@all_tasks
   end
 
+  define_method (:description) do
+    @description
+  end
+
   define_method(:save) do
     @@all_tasks.push(self)
   end
+
 end
