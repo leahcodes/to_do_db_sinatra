@@ -8,4 +8,10 @@ describe(Task) do
       expect(test_task.description()).to(eq("scrub the zebra"))
     end
   end
+
+  describe(".all") do
+    it("initializes an empty array to hold class variables later") do
+      expect(Task.all()).to(eq([]))
+    end
+  end
 end
