@@ -22,14 +22,21 @@ end
 
 get('/lists/:id') do
   @list = List.find(params.fetch("id").to_i())
+  @list_id = @list.id().to_i()
   erb(:list)
 end
 
 post('/tasks') do
   description = params.fetch("description")
+  time = params.fetch("time")
   list_id = params.fetch("list_id").to_i()
-  new_task = Task.new({:description => description, :list_id => list_id, :time => "2015-08-18"})
+  new_task = Task.new({:description => description, :list_id => list_id, :time => time})
   new_task.save()
+  @list = List.find(params.fetch("list_id").to_i())
+  erb(:list)
+end
+
+post('/clear') do
   @list = List.find(params.fetch("list_id").to_i())
   erb(:list)
 end

@@ -8,7 +8,7 @@ class Task
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO tasks (description, list_id, time) VALUES ('#{@description}', #{@list_id}, '#{@time}')")
+    DB.exec("INSERT INTO tasks (description, list_id, time) VALUES ('#{@description}', #{@list_id}, '#{@time}');")
   end
 
   define_method(:==) do |another_task|
@@ -26,4 +26,18 @@ class Task
     end
     tasks
   end
+
+        #
+  # define_singleton_method(:sort_ascending) do
+  #   tasks_to_sort = DB.exec("SELECT * FROM tasks ORDER BY time asc;")
+  #   sorted_tasks = []
+  #   tasks_to_sort.each() do |task|
+  #     description = task.fetch("description")
+  #     list_id = task.fetch("list_id").to_i()
+  #     time = task.fetch("time")
+  #     sorted_tasks.push(Task.new({:description => description, :list_id => list_id, :time => time}))
+  #   end
+  #   sorted_tasks
+  # end
+
 end

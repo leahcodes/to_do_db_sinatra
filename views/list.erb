@@ -5,7 +5,7 @@
 
 <ul>
   <% @list.tasks().each() do |task| %>
-    <li><%= task.description() %></li>
+    <li><%= task.description() %>, finish by <%= task.time() %></li>
   <% end %>
 </ul>
 
@@ -17,9 +17,21 @@
 
 <form action="/tasks" method="post">
   <div class="form-group">
+
     <input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %>">
+
     <label class="form-label" for="description">Task:</label>
     <input id="description" name="description" type="text" class="form-control">
+
+    <label class="form-label" for="time">Done by:</label>
+    <input id="time" name="time" type="date" class="form-control">
+
     <button name="submit" class="btn">Add Task</button>
   </div>
 </form>
+
+<!-- <form action="/clear" method="post">
+  <div class="form-group">
+    <button name="submit" class="btn"><% @list.clear() %>Clear All</button>
+  </div>
+</form> -->
