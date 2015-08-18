@@ -24,4 +24,25 @@ describe(List) do
     end
   end
 
+  describe(".find") do
+  it("returns a list by its ID") do
+    test_list = List.new({:name => "Your List", :id => nil})
+    test_list.save()
+    test_list2 = List.new({:name => "Moar Lists", :id => nil})
+    test_list2.save()
+    expect(List.find(test_list2.id())).to(eq(test_list2))
+  end
+ end
+
+  describe('#tasks') do
+   it("returns an arry of tasks for the list") do
+     test_list = List.new({:name => "Epicorgis", :id => nil})
+     test_list.save()
+     test_task = Task.new({:description => "walk the corgi", :list_id => test_list.id()})
+     test_task.save()
+     test_task2 = Task.new({:description => "feed the corgi", :list_id => test_list.id()})
+     test_task2.save()
+     expect(test_list.tasks()).to(eq([test_task, test_task2]))
+   end
+ end
 end

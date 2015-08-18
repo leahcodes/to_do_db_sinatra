@@ -1,0 +1,25 @@
+<h1><%= @list.name() %></h1>
+
+<% if @list.tasks().any?() %>
+  <p>Here are your tasks:</p>
+
+<ul>
+  <% @list.tasks().each() do |task| %>
+    <li><%= task.description() %></li>
+  <% end %>
+</ul>
+
+<%else %>
+  <p>You don't have any tasks yet! Create them below.</p>
+<% end %>
+
+<p>Create a new task:</p>
+
+<form action="/tasks" method="post">
+  <div class="form-group">
+    <input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %>">
+    <label class="form-label" for="description">Task:</label>
+    <input id="description" name="description" type="text" class="form-control">
+    <button name="submit" class="btn">Add Task</button>
+  </div>
+</form>
