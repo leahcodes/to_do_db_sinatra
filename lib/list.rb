@@ -43,7 +43,8 @@ class List
     tasks.each() do |task|
       description = task.fetch("description")
       list_id = task.fetch("list_id").to_i()
-      list_tasks.push(Task.new({:description => description, :list_id => list_id}))
+      time = task.fetch("time")
+      list_tasks.push(Task.new({:description => description, :list_id => list_id, :time => time}))
     end
     list_tasks
   end

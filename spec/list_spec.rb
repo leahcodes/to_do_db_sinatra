@@ -38,9 +38,9 @@ describe(List) do
    it("returns an arry of tasks for the list") do
      test_list = List.new({:name => "Epicorgis", :id => nil})
      test_list.save()
-     test_task = Task.new({:description => "walk the corgi", :list_id => test_list.id()})
+     test_task = Task.new({:description => "walk the corgi", :list_id => test_list.id(), :time => '2015-08-18'})
      test_task.save()
-     test_task2 = Task.new({:description => "feed the corgi", :list_id => test_list.id()})
+     test_task2 = Task.new({:description => "feed the corgi", :list_id => test_list.id(), :time => '2015-08-18'})
      test_task2.save()
      expect(test_list.tasks()).to(eq([test_task, test_task2]))
    end

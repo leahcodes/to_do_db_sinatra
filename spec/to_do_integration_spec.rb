@@ -31,7 +31,7 @@ set(:show_exceptions, false)
    it('will allow the user to add a task to a list') do
      test_list = List.new({:name => 'Errands', :id => nil})
      test_list.save()
-     test_task = Task.new({:description => 'buy milk', :list_id => test_list.id()})
+     test_task = Task.new({:description => 'buy milk', :list_id => test_list.id(), :time => "2015-08-18"})
      test_task.save()
      visit("/lists/#{test_list.id()}")
      click_button('Add Task')
