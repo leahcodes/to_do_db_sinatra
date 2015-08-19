@@ -45,4 +45,15 @@ describe(List) do
      expect(test_list.tasks()).to(eq([test_task, test_task2]))
    end
  end
+
+  describe('#update') do
+    it('allows a user to udpate information in the lists database') do
+      test_list = List.new({:name => "Epicorgis", :id => nil})
+      test_list.save()
+      test_list.update({:name => "Epicbutts"})
+      expect(test_list.name()).to(eq("Epicbutts"))
+    end
+  end
+
+
 end
