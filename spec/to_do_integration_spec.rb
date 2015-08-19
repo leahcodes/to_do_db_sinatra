@@ -15,12 +15,12 @@ set(:show_exceptions, false)
 
  describe("the details for a single list", {:type => :feature}) do
    it('will allow the user to add a task to a list') do
-     test_list = List.new({:name => 'Errands', :id => nil})
-     test_list.save()
-     test_task = Task.new({:description => 'buy milk', :list_id => test_list.id(), :time => "2015-08-18"})
-     test_task.save()
-     visit("/lists/#{test_list.id()}")
-     click_button('Add Task')
-     expect(page).to have_content('buy milk')
+     list = List.new({:name => "Grocery List", :id => nil})
+     list.save()
+     task = Task.new({:description => "buy milk", :list_id => 1, :time => "2015-08-18"})
+     task.save()
+     visit('/')
+     click_link(list.name())
+     expect(page).to have_content('tasks')
    end
  end
