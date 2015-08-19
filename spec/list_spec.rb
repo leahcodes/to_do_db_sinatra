@@ -55,5 +55,27 @@ describe(List) do
     end
   end
 
+  describe('#delete') do
+    it("lets you delete a list from the database") do
+      test_list = List.new({:name => "Epicorgis", :id => nil})
+      test_list.save()
+      test_list2 = List.new({:name => "Epicbutts", :id => nil})
+      test_list2.save()
+      test_list.delete()
+      expect(List.all()).to(eq([test_list2]))
+    end
+  end
 
+  describe('#delete') do
+    it('lets you delete tasks from the database') do
+      test_list = List.new({:name => "Epicorgis", :id => nil})
+      test_list.save()
+      test_task = Task.new({:description => "walk the corgi", :list_id => test_list.id(), :time => '2015-08-18'})
+      test_task.save()
+      test_task2 = Task.new({:description => "feed the corgi", :list_id => test_list.id(), :time => '2015-08-18'})
+      test_task2.save()
+      test_list.delete()
+      expect(Task.all()).to(eq([]))
+    end
+  end
 end
