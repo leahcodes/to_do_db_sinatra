@@ -46,28 +46,4 @@ describe(Task) do
     end
   end
 
-  describe(".clear") do
-    it("clears out the tasks for a specific list") do
-      task1 = Task.new({:description => "learn SQL", :list_id => 1, :time => "2015-08-18"})
-      Task.clear(1)
-      expect(Task.all()).to(eq([]))
-    end
-  end
-
-
-  # describe("#sort_ascending") do
-  #   it("will sort the list based on time or date") do
-  #     task1 = Task.new({:description => "Go to pool", :list_id => 1, :time => "2015-08-13"})
-  #     task2 = Task.new({:description => "Go to school", :list_id => 1, :time => "2015-08-18"})
-  #     expect(Task.sort_ascending()).to(eq([task2, task1]))
-  #   end
-  # end
-  #
-  # describe("sort_descending") do
-  #   it("will sort the list based on time or date") do
-  #     task1 = Task.new({:description => "Go to pool", :list_id => 1, :time => "2015-08-13"})
-  #     task2 = Task.new({:description => "Go to school", :list_id => 1, :time => "2015-08-18"})
-  #     expect(Task.all().sort_descending()).to(eq([task1, task2]))
-  #   end
-  # end
 end

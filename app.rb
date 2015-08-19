@@ -35,8 +35,3 @@ post('/tasks') do
   @list = List.find(params.fetch("list_id").to_i())
   erb(:list)
 end
-
-post('/clear') do
-  @list = List.find(params.fetch("list_id").to_i())
-  erb(:list)
-end

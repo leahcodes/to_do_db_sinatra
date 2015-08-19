@@ -49,7 +49,4 @@ class List
     list_tasks
   end
 
-  define_method(:clear) do
-    DB.exec("DELETE FROM tasks WHERE list_id = #{self.id()};")
-  end
 end
